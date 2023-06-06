@@ -136,8 +136,6 @@ describe("transformarNumeroAleatorio", () => {
   });
 });
 
-//generarPuntuacion mockea partida.puntuación para no usar el valor real, para ver que se están sumando bien los números
-
 describe("generarPuntuacion", () => {
   it("Si superior a 10, debe devolver como valor de la carta 0.5. Caso contrario, su valor nominal. Caso arista 1", () => {
     // Arrange
