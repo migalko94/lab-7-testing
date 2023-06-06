@@ -1,4 +1,9 @@
-import { partida, EstadoPartida, comprobarEstadoPartida } from "./model";
+import {
+  partida,
+  EstadoPartida,
+  comprobarEstadoPartida,
+  setPuntos,
+} from "./model";
 import {
   generarNumeroAleatorio,
   transformaNumeroAleatorio,
@@ -106,10 +111,11 @@ export const mostrarCarta = (cartaGenerada: number): void => {
 };
 
 export const dameCarta = (): void => {
-  let cartaGenerada = generarNumeroAleatorio();
-  cartaGenerada = transformaNumeroAleatorio(cartaGenerada);
-  mostrarCarta(cartaGenerada);
-  generarPuntuacion(cartaGenerada);
+  partida.cartaGenerada = generarNumeroAleatorio();
+  partida.cartaGenerada = transformaNumeroAleatorio(partida.cartaGenerada);
+  mostrarCarta(partida.cartaGenerada);
+  const puntuacionTrasSuma = generarPuntuacion(partida.cartaGenerada);
+  setPuntos(puntuacionTrasSuma);
   let mensaje = `Tu puntuación es ${partida.puntuacion}`;
   mostrarMensaje(mensaje);
   resultadoPartida();
@@ -243,7 +249,8 @@ export const mostrarQueHabriaPasado = () => {
   let cartaGenerada = generarNumeroAleatorio();
   cartaGenerada = transformaNumeroAleatorio(cartaGenerada);
   mostrarCarta(cartaGenerada);
-  generarPuntuacion(cartaGenerada);
+  const puntuacionTrasSuma = generarPuntuacion(cartaGenerada);
+  setPuntos(puntuacionTrasSuma);
 
   const estado = comprobarEstadoPartida(partida.puntuacion);
   mostrarMensajeResultadoPosible(estado);

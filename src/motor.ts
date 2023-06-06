@@ -8,12 +8,10 @@ export const transformaNumeroAleatorio = (cartaGenerada: number): number => {
   return cartaGenerada > 7 ? cartaGenerada + 2 : cartaGenerada;
 };
 
-export const generarPuntuacion = (cartaGenerada: number) => {
+export const generarPuntuacion = (cartaGenerada: number): number => {
   const puntosSumados = cartaGenerada < 10 ? cartaGenerada : 0.5;
-  const puntuacionTrasSuma = partida.puntuacion + puntosSumados;
-  setPuntos(puntuacionTrasSuma);
+  return partida.puntuacion + puntosSumados;
 };
 
-const setPuntos = (nuevoPunto: number): void => {
-  partida.puntuacion = nuevoPunto;
-};
+export const puntuacionTrasSuma = generarPuntuacion(partida.cartaGenerada);
+partida.setPuntos(puntuacionTrasSuma);

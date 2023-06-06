@@ -1,6 +1,10 @@
 import { vi } from "vitest";
 
-import { generarNumeroAleatorio, transformaNumeroAleatorio } from "./motor";
+import {
+  generarNumeroAleatorio,
+  generarPuntuacion,
+  transformaNumeroAleatorio,
+} from "./motor";
 
 describe("generarNumeroAleatorio", () => {
   it("Debe devolver un número aleatorio entre 1 y 10. Caso arista 1", () => {
@@ -73,11 +77,9 @@ describe("generarPuntuacion", () => {
     // Arrange
     const cartaGenerada: number = 10;
     const numeroEsperado: number = 0.5;
-    const puntosSumados = cartaGenerada < 10 ? cartaGenerada : 0.5;
 
     // Act
-    const resultado = puntosSumados;
-
+    const resultado = generarPuntuacion(cartaGenerada);
     // Assert
     expect(numeroEsperado).toBe(resultado);
   });
@@ -86,10 +88,9 @@ describe("generarPuntuacion", () => {
     // Arrange
     const cartaGenerada: number = 9;
     const numeroEsperado: number = 9;
-    const puntosSumados = cartaGenerada < 10 ? cartaGenerada : 0.5;
 
     // Act
-    const resultado = puntosSumados;
+    const resultado = generarPuntuacion(cartaGenerada);
 
     // Assert
     expect(numeroEsperado).toBe(resultado);

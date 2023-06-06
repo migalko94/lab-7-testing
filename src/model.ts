@@ -3,6 +3,9 @@ export type EstadoPartida =
   | "JUSTO_MAXIMA"
   | "TE_HAS_PASADO";
 
+export let puntuacion: number = 0;
+export let cartaGenerada = 0;
+
 export const comprobarEstadoPartida = (puntuacion: number): EstadoPartida => {
   if (puntuacion > 7.5) {
     return "TE_HAS_PASADO";
@@ -26,8 +29,14 @@ export const reinicioImagen = () => {
   }
 };
 
+export const setPuntos = (nuevoPunto: number): void => {
+  partida.puntuacion = nuevoPunto;
+};
+
 export const partida = {
   puntuacion: 0,
+  cartaGenerada: 0,
   puntuacionACero,
   reinicioImagen,
+  setPuntos,
 };
