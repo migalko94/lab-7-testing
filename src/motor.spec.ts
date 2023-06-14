@@ -66,7 +66,7 @@ describe("generarNumeroAleatorio", () => {
 describe("generarPuntuacion", () => {
   it("Si superior a 10, debe devolver como valor de la carta 0.5. Caso contrario, su valor nominal. Caso arista 1", () => {
     // Arrange
-    const cartaGenerada: number = 10;
+    vi.spyOn(model, "cartaGenerada", "get").mockReturnValue(10);
     const numeroEsperado: number = 0.5;
 
     // Act
@@ -77,7 +77,7 @@ describe("generarPuntuacion", () => {
 
   it("Si superior a 10, debe devolver como valor de la carta 0.5. Caso contrario, su valor nominal. Caso arista 2", () => {
     // Arrange
-    const cartaGenerada: number = 9;
+    vi.spyOn(model, "cartaGenerada", "get").mockReturnValue(9);
     const numeroEsperado: number = 9;
 
     // Act
@@ -90,7 +90,7 @@ describe("generarPuntuacion", () => {
   it("A puntuación tiene que sumarse puntosSumados. Se suma valor transformado a 0.5. Caso arista 1", () => {
     // Arrange
     vi.spyOn(partida, "puntuacion", "get").mockReturnValue(5);
-    const cartaGenerada: number = 10;
+    vi.spyOn(model, "cartaGenerada", "get").mockReturnValue(10);
     const numeroEsperado = 5.5;
 
     // Act
@@ -102,7 +102,7 @@ describe("generarPuntuacion", () => {
   it("A puntuación tiene que sumarse puntosSumados. Se suma valor no transformado, esto es, nominal. Caso arista 2", () => {
     // Arrange
     vi.spyOn(partida, "puntuacion", "get").mockReturnValue(4);
-    const cartaGenerada: number = 3;
+    vi.spyOn(model, "cartaGenerada", "get").mockReturnValue(3);
     const numeroEsperado = 7;
 
     // Act
@@ -139,11 +139,11 @@ describe("transformarNumeroAleatorio", () => {
 
   it("Si superior a 7, debe devolver un número aleatorio entre 1-7 y 10-12, excluidos los valores 8 y 9. Caso arista 3", () => {
     // Arrange
-    const numeroAleatorio: number = 7;
+    vi.spyOn(model, "cartaGenerada", "get").mockReturnValue(7);
     const numeroEsperado: number = 7;
 
     // Act
-    const resultado = transformaNumeroAleatorio(numeroAleatorio);
+    const resultado = transformaNumeroAleatorio(cartaGenerada);
 
     // Assert
     expect(resultado).toBe(numeroEsperado);
@@ -151,11 +151,11 @@ describe("transformarNumeroAleatorio", () => {
 
   it("Si superior a 7, debe devolver un número aleatorio entre 1-7 y 10-12, excluidos los valores 8 y 9. Caso arista 4", () => {
     // Arrange
-    const numeroAleatorio: number = 3;
+    vi.spyOn(model, "cartaGenerada", "get").mockReturnValue(3);
     const numeroEsperado: number = 3;
 
     // Act
-    const resultado = transformaNumeroAleatorio(numeroAleatorio);
+    const resultado = transformaNumeroAleatorio(cartaGenerada);
 
     // Assert
     expect(resultado).toBe(numeroEsperado);
@@ -163,11 +163,11 @@ describe("transformarNumeroAleatorio", () => {
 
   it("Si superior a 7, debe devolver un número aleatorio entre 1-7 y 10-12, excluidos los valores 8 y 9. Caso arista 5", () => {
     // Arrange
-    const numeroAleatorio: number = 5;
+    vi.spyOn(model, "cartaGenerada", "get").mockReturnValue(5);
     const numeroEsperado: number = 5;
 
     // Act
-    const resultado = transformaNumeroAleatorio(numeroAleatorio);
+    const resultado = transformaNumeroAleatorio(cartaGenerada);
 
     // Assert
     expect(resultado).toBe(numeroEsperado);
@@ -175,11 +175,11 @@ describe("transformarNumeroAleatorio", () => {
 
   it("Si superior a 7, debe devolver un número aleatorio entre 1-7 y 10-12, excluidos los valores 8 y 9. Caso arista 6", () => {
     // Arrange
-    const numeroAleatorio: number = 1;
+    vi.spyOn(model, "cartaGenerada", "get").mockReturnValue(1);
     const numeroEsperado: number = 1;
 
     // Act
-    const resultado = transformaNumeroAleatorio(numeroAleatorio);
+    const resultado = transformaNumeroAleatorio(cartaGenerada);
 
     // Assert
     expect(resultado).toBe(numeroEsperado);
